@@ -13,15 +13,15 @@ class CreateModelSessaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessaos', function (Blueprint $table) {
+        Schema::create('model_sessaos', function (Blueprint $table) {
             $table->increments('idSessao');
             $table->dateTime('dataInicio');
             $table->enum('status', ['NAO_INICIADA','EM_ANDAMENTO','ATRASADA','FINALIZADA']);
             $table->integer('duracaoTotal')->default(null)->nullable();
             $table->integer('filme');
-            $table->foreign('filme')->references('idFilme')->on('filmes')->onUpdate('cascade');
+            $table->foreign('filme')->references('idFilme')->on('model_filmes')->onUpdate('cascade');
             $table->string('sala', 8);
-            $table->foreign('sala')->references('idSala')->on('salas')->onUpdate('cascade');
+            $table->foreign('sala')->references('idSala')->on('model_salas')->onUpdate('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateModelSessaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sessaos');
+        Schema::dropIfExists('model_sessaos');
     }
 }

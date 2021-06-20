@@ -13,7 +13,7 @@ class CreateModelFilmesTable extends Migration
      */
     public function up()
     {
-        Schema::create('filmes', function (Blueprint $table) {
+        Schema::create('model_filmes', function (Blueprint $table) {
             $table->integer('idFilme')->autoIncrement();
             $table->string('diretor', 255);
             $table->string('titulo', 255);
@@ -28,6 +28,6 @@ class CreateModelFilmesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filmes');
+        Schema::dropIfExists('model_filmes');
     }
 }

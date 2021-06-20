@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ModelSala extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'idSala';
+
+    public function relSessaos() {
+        return $this->hasMany('App\Models\ModelSessao', 'sala');
+    }
+
 }

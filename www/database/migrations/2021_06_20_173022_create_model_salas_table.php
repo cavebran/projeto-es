@@ -13,7 +13,7 @@ class CreateModelSalasTable extends Migration
      */
     public function up()
     {
-        Schema::create('salas', function (Blueprint $table) {
+        Schema::create('model_salas', function (Blueprint $table) {
             $table->string('idSala', 8)->primary();
             $table->enum('tipo', ['COMUM', 'EQUIPADA']);
             $table->integer('capacidade');
@@ -29,6 +29,6 @@ class CreateModelSalasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salas');
+        Schema::dropIfExists('model_salas');
     }
 }

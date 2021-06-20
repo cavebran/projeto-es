@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ModelSessao;
 
-class FuncionarioController extends Controller
+class SessaoController extends Controller
 {
+    
+    private $objSessao;
+
+    public function __construct()
+    {
+        $this->objSessao = new ModelSessao();
+    }
 
     /**
      * Display a listing of the resource.
@@ -14,7 +22,8 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        
+        $sessao = $this->objSessao->all()->sortByDesc('dataInicio');
+        return view('index', compact('sessao'));
     }
 
     /**
