@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessaoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\SessaoController@index');
+Route::resource('/sessoes', SessaoController::class);

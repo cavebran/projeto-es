@@ -9,8 +9,6 @@ class ModelFilme extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'idFilme';
-
     public function relSessaos() {
         return $this->hasMany('App\Models\ModelSessao', 'filme');
     }

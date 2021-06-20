@@ -14,7 +14,7 @@ class CreateModelSalasTable extends Migration
     public function up()
     {
         Schema::create('model_salas', function (Blueprint $table) {
-            $table->string('idSala', 8)->primary();
+            $table->string('id', 8)->primary()->comment('numero da sala');
             $table->enum('tipo', ['COMUM', 'EQUIPADA']);
             $table->integer('capacidade');
             $table->integer('intervaloMin')->comment('em segundos');

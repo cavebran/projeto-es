@@ -23,7 +23,7 @@ class SessaoController extends Controller
     public function index()
     {
         $sessao = $this->objSessao->all()->sortByDesc('dataInicio');
-        return view('index', compact('sessao'));
+        return View('index', compact('sessao'));
     }
 
     /**
@@ -55,7 +55,8 @@ class SessaoController extends Controller
      */
     public function show($id)
     {
-        //
+        $sessao = $this->objSessao->find($id);
+        return View('show', compact('sessao'));
     }
 
     /**

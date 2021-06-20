@@ -7,8 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModelFuncionario extends Model
 {
-
-    protected $primaryKey = 'cpfFunc';
-
     use HasFactory;
 }

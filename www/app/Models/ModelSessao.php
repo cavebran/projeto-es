@@ -9,14 +9,12 @@ class ModelSessao extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'idSessao';
-
     public function relFilmes() {
-        return $this->hasOne('App\Models\ModelFilme', 'idFilme', 'filme');
+        return $this->hasOne('App\Models\ModelFilme', 'id', 'filme');
     }
 
     public function relSalas() {
-        return $this->hasOne('App\Models\ModelSala', 'idSala', 'sala');
+        return $this->hasOne('App\Models\ModelSala', 'id', 'sala');
     }
 
 }

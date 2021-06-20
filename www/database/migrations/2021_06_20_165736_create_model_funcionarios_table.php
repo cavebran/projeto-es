@@ -14,7 +14,7 @@ class CreateModelFuncionariosTable extends Migration
     public function up()
     {
         Schema::create('model_funcionarios', function (Blueprint $table) {
-            $table->string('cpfFunc', 11)->primary();
+            $table->string('id', 11)->primary()->comment('CPF');
             $table->string('nome', 255);
             $table->string('senha', 32);
             $table->enum('cargo', ['GERENTE', 'ATENDENTE', 'LIMPEZA', 'SEGURANCA']);

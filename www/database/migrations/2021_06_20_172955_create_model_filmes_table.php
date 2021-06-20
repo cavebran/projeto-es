@@ -14,7 +14,7 @@ class CreateModelFilmesTable extends Migration
     public function up()
     {
         Schema::create('model_filmes', function (Blueprint $table) {
-            $table->integer('idFilme')->autoIncrement();
+            $table->integer('id')->autoIncrement();
             $table->string('diretor', 255);
             $table->string('titulo', 255);
             $table->integer('duracao')->comment('em segundos');;
