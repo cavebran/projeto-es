@@ -14,7 +14,10 @@ class CreateModelFuncionariosTable extends Migration
     public function up()
     {
         Schema::create('funcionarios', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('cpfFunc', 11)->primary();
+            $table->string('nome', 255);
+            $table->string('senha', 32);
+            $table->enum('cargo', ['GERENTE', 'ATENDENTE', 'LIMPEZA', 'SEGURANCA']);
         });
     }
 
@@ -25,6 +28,6 @@ class CreateModelFuncionariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('model_funcionarios');
+        Schema::dropIfExists('funcionarios');
     }
 }
