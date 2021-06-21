@@ -68,9 +68,6 @@
                 <a href="{{url("sessoes/$sessaos->id/edit")}}">
                     <button class="btn btn-primary">Editar</button>
                 </a>
-                <a href="">
-                    <button class="btn btn-primary">Deletar</button>
-                </a>
             </td>
         </tr>
         @endforeach

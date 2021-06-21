@@ -31,7 +31,7 @@
     </nav>
 </header>
 <br>
-<h1 class="text-center mt-5">Cadastrar nova sessão</h1>
+<h1 class="text-center mt-5">@if(isset($sessao)) Editar uma Sessão @else Cadastrar nova sessão @endif</h1>
 
 @if(isset($errors) && count($errors)>0)
     <div class="text-center mt-4 mb-4 p-2 alert-danger"> 
@@ -41,12 +41,19 @@
     </div>
 @endif
 
-<form method="POST" name="formCad" id="formCad" action="{{url('sessoes/')}}">
+@if(isset($sessao))
+    <form method="POST" name="formEdit" id="formEdit" action="{{url('sessoes/$sessao->id')}}">
+    @method('PUT')
+@else
+    <form method="POST" name="formCad" id="formCad" action="{{url('sessoes/')}}">
+@endif
+
+
     @csrf
-    <input class="form-control" type="datetime-local" name="dataInicio" id="dataInicio"><br>
+    <input class="form-control" type="text" name="dataInicio" id="dataInicio" value="{{$sessao->dataInicio ?? ''}}" placeholder="AAAA-MM-DD HH:MM:SS"><br>
     <div class="input-group">
         <select class="custom-select" id="status" name="status">
-            <option selected value="">Escolha um status...</option>
+            <option selected value="{{$sessao->status ?? ''}}">{{$sessao->status ?? 'Escolha um Status'}}</option>
             <option value="NAO_INICIADA">Não iniciada</option>
             <option value="EM_ANDAMENTO">Em andamento</option>
             <option value="ATRASADA">Atrasada</option>
@@ -58,7 +65,7 @@
     </div><br>
     <div class="input-group">
         <select class="custom-select" id="filme" name="filme">
-            <option selected value="">Escolha um filme...</option>
+            <option selected value="{{$sessao->relFilmes->id ?? ''}}">{{$sessao->relFilmes->titulo ?? 'Escolha um Filme'}}</option>
             @foreach($filmes as $filme)
                 <option value="{{$filme->id}}">{{$filme->titulo}}</option>
             @endforeach
@@ -69,7 +76,7 @@
     </div><br>
     <div class="input-group">
         <select class="custom-select" id="sala" name="sala">
-            <option selected value="">Escolha uma sala...</option>
+            <option selected value="{{$sessao->relSalas->id ?? ''}}">{{$sessao->relSalas->id ?? 'Escolha uma Sala'}}</option>
             @foreach($salas as $sala)
                 <option value="{{$sala->id}}">{{$sala->id}}</option>
             @endforeach
@@ -78,7 +85,7 @@
             <label class="input-group-text" for="inputGroupSelect02">Options</label>
         </div>
     </div><br>
-    <input class="btn btn-primary" type="submit" value="Cadastra">
+    <input class="btn btn-primary" type="submit" value="@if(isset($sessao)) Editar @else Cadastrar @endif">
 
 </form>
 @endsection

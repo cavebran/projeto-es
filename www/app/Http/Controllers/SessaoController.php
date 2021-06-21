@@ -86,7 +86,7 @@ class SessaoController extends Controller
         $sessao = $this->objSessao->find($id);
         $filmes = $this->objFilmes->all();
         $salas = $this->objSalas->all();
-        return View('edit', compact('sessao', 'filmes', 'salas'));
+        return View('create', compact('sessao', 'filmes', 'salas'));
     }
 
     /**
@@ -98,7 +98,13 @@ class SessaoController extends Controller
      */
     public function update(SessaoRequest $request, $id)
     {
-        //
+        $this->objSessao->where(['id'=>$id])->update([
+            'dataInicio'=>$request->dataInicio,
+            'status'=>$request->status,
+            'filme'=>$request->filme,
+            'sala'=>$request->sala
+        ]);
+        return redirect('sessoes');
     }
 
     /**
