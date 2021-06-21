@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ModelFilme;
 use App\Models\ModelSala;
-use Illuminate\Http\Request;
+use App\Http\Requests\SessaoRequest;
 use App\Models\ModelSessao;
 
 class SessaoController extends Controller
@@ -50,7 +50,7 @@ class SessaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SessaoRequest $request)
     {
         $cad = $this->objSessao->create([
             'dataInicio'=>$request->dataInicio,
@@ -96,7 +96,7 @@ class SessaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SessaoRequest $request, $id)
     {
         //
     }

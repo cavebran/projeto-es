@@ -51,7 +51,7 @@
 
         @foreach($sessao as $sessaos)
         @php
-        $filme=$sessaos->find($sessaos->filme)->relFilmes;
+            $filme=$sessaos->find($sessaos->filme)->relFilmes;
         
         @endphp
         <tr>
