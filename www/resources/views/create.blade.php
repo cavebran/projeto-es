@@ -42,12 +42,11 @@
 @endif
 
 @if(isset($sessao))
-    <form method="POST" name="formEdit" id="formEdit" action="{{url('sessoes/$sessao->id')}}">
+    <form method="POST" name="formEdit" id="formEdit" action="{{url('sessoes/$sessao->id/')}}">
     @method('PUT')
 @else
     <form method="POST" name="formCad" id="formCad" action="{{url('sessoes/')}}">
 @endif
-
 
     @csrf
     <input class="form-control" type="text" name="dataInicio" id="dataInicio" value="{{$sessao->dataInicio ?? ''}}" placeholder="AAAA-MM-DD HH:MM:SS"><br>

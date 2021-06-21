@@ -10,17 +10,6 @@ use App\Models\ModelSessao;
 class SessaoController extends Controller
 {
     
-    private $objSessao;
-    private $objFilmes;
-    private $objSalas;
-
-    public function __construct()
-    {
-        $this->objSessao = new ModelSessao();
-        $this->objFilmes = new ModelFilme();
-        $this->objSalas = new ModelSala();
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +17,7 @@ class SessaoController extends Controller
      */
     public function index()
     {
-        $sessao = $this->objSessao->all()->sortByDesc('dataInicio');
+        $sessao = ModelSessao::all()->sortByDesc('dataInicio');
         return View('index', compact('sessao'));
     }
 
@@ -39,8 +28,8 @@ class SessaoController extends Controller
      */
     public function create()
     {
-        $filmes = $this->objFilmes->all();
-        $salas = $this->objSalas->all();
+        $filmes = ModelFilme::all();
+        $salas = ModelSala::all();
         return View('create', compact('filmes', 'salas'));
     }
 
@@ -52,7 +41,7 @@ class SessaoController extends Controller
      */
     public function store(SessaoRequest $request)
     {
-        $cad = $this->objSessao->create([
+        $cad = ModelSessao::create([
             'dataInicio'=>$request->dataInicio,
             'status'=>$request->status,
             'filme'=>$request->filme,
@@ -71,7 +60,7 @@ class SessaoController extends Controller
      */
     public function show($id)
     {
-        $sessao = $this->objSessao->find($id);
+        $sessao = ModelSessao::find($id);
         return View('show', compact('sessao'));
     }
 
@@ -83,9 +72,9 @@ class SessaoController extends Controller
      */
     public function edit($id)
     {
-        $sessao = $this->objSessao->find($id);
-        $filmes = $this->objFilmes->all();
-        $salas = $this->objSalas->all();
+        $sessao = ModelSessao::find($id);
+        $filmes = ModelFilme::all();
+        $salas = ModelSala::all();
         return View('create', compact('sessao', 'filmes', 'salas'));
     }
 
@@ -98,7 +87,7 @@ class SessaoController extends Controller
      */
     public function update(SessaoRequest $request, $id)
     {
-        $this->objSessao->where(['id'=>$id])->update([
+        ModelSessao::where('id', $id)->update([
             'dataInicio'=>$request->dataInicio,
             'status'=>$request->status,
             'filme'=>$request->filme,
