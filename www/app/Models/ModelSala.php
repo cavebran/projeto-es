@@ -12,6 +12,7 @@ class ModelSala extends Model
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;
 
     public function relSessaos() {
         return $this->hasMany('App\Models\ModelSessao', 'sala');
