@@ -9,6 +9,9 @@ class ModelSessao extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['dataInicio', 'status', 'filme', 'sala'];
+    public $timestamps = false;
+
     public function relFilmes() {
         return $this->hasOne('App\Models\ModelFilme', 'id', 'filme');
     }
@@ -16,5 +19,4 @@ class ModelSessao extends Model
     public function relSalas() {
         return $this->hasOne('App\Models\ModelSala', 'id', 'sala');
     }
-
 }

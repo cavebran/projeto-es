@@ -31,7 +31,7 @@
     </nav>
 </header>
 <br>
-<h1 class="text-center mt-5">Sessao #{{$sessao->id}}</h1>
+<h1 class="text-center mt-5">Detalhes da sessão #{{$sessao->id}}</h1>
 @php
     $filme=$sessao->find($sessao->filme)->relFilmes;
 @endphp

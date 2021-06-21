@@ -32,7 +32,9 @@
 </header>
 <br>
 <h1 class="text-center mt-5">Sessões</h1>
-
+<a href="{{url("sessoes/create")}}">
+    <button class="btn btn-primary">Cadastrar</button>
+</a>
 <table class="table table-hover table-dark">
     <thead>
         <tr>
@@ -63,7 +65,7 @@
                 <a href="{{url("sessoes/$sessaos->id")}}">
                     <button class="btn btn-primary">Visualizar</button>
                 </a>
-                <a href="">
+                <a href="{{url("sessoes/$sessaos->id/edit")}}">
                     <button class="btn btn-primary">Editar</button>
                 </a>
                 <a href="">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ModelFilme;
+use App\Models\ModelSala;
 use Illuminate\Http\Request;
 use App\Models\ModelSessao;
 
@@ -9,10 +11,14 @@ class SessaoController extends Controller
 {
     
     private $objSessao;
+    private $objFilmes;
+    private $objSalas;
 
     public function __construct()
     {
         $this->objSessao = new ModelSessao();
+        $this->objFilmes = new ModelFilme();
+        $this->objSalas = new ModelSala();
     }
 
     /**
@@ -33,7 +39,9 @@ class SessaoController extends Controller
      */
     public function create()
     {
-        //
+        $filmes = $this->objFilmes->all();
+        $salas = $this->objSalas->all();
+        return View('create', compact('filmes', 'salas'));
     }
 
     /**
@@ -44,7 +52,15 @@ class SessaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cad = $this->objSessao->create([
+            'dataInicio'=>$request->dataInicio,
+            'status'=>$request->status,
+            'filme'=>$request->filme,
+            'sala'=>$request->sala
+        ]);
+        if($cad) {
+            return redirect('sessoes');
+        }
     }
 
     /**
@@ -67,7 +83,10 @@ class SessaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sessao = $this->objSessao->find($id);
+        $filmes = $this->objFilmes->all();
+        $salas = $this->objSalas->all();
+        return View('edit', compact('sessao', 'filmes', 'salas'));
     }
 
     /**
