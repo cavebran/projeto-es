@@ -20,7 +20,13 @@ class FuncionarioController extends Controller
             return redirect('/sessoes');
         }
         else {
-            return redirect('/');
+            if (!$funcionario) {
+                return redirect('/')->withErrors(['Funcionário não Cadastrado']);
+            } else if (!($funcionario['senha'] == $data['pass'])){
+                return redirect('/')->withErrors(['Senha Incorreta']);
+            } else {
+                return redirect('/')->withErrors(['Funcionário não é Gerente']);
+            }
         }
     }
 }
