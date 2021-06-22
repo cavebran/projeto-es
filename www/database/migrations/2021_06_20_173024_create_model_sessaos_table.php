@@ -23,6 +23,12 @@ class CreateModelSessaosTable extends Migration
             $table->string('sala', 8);
             $table->foreign('sala')->references('id')->on('model_salas')->onUpdate('cascade');
         });
+
+        DB::unprepared('CREATE TRIGGER calcular_duracao BEFORE INSERT ON model_sessaos FOR EACH ROW
+            BEGIN
+                SET NEW.duracaoTotal = 
+                    (SELECT duracao FROM model_filmes WHERE NEW.filme = id) + (SELECT intervaloIdeal FROM model_salas WHERE NEW.sala = id);
+            END');
     }
 
     /**
@@ -33,5 +39,10 @@ class CreateModelSessaosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('model_sessaos');
+        Schema::dropIfExists('calcular_duracao');
+
+        // DB::unprepared('
+        //     DROP TRIGGER "calcular_duracao"
+        // ');
     }
 }
