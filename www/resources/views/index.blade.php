@@ -60,14 +60,13 @@
 
         @foreach($sessao as $sessaos)
         @php
-            $filme=$sessaos->find($sessaos->filme)->relFilmes;
-        
+            $filme=$sessaos->relFilmes($sessaos->filme);
         @endphp
         <tr>
             <th scope="row">#{{$sessaos->id}}</th>
             <td>{{$sessaos->dataInicio}}</td>
             <td>{{$sessaos->duracaoTotal}}</td>
-            <td>{{$filme->titulo}}</td>
+            <td>{{$filme}}</td>
             <td>{{$sessaos->sala}}</td>
             <td>{{$sessaos->status}}</td>
             <td>
