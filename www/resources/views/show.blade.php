@@ -42,12 +42,12 @@
 <br>
 <h1 class="text-center mt-5">Detalhes da sessão #{{$sessao->id}}</h1>
 @php
-    $filme=$sessao->find($sessao->filme)->relFilmes;
+    $filme=$sessao->relFilmes($sessao->filme)['titulo'];
 @endphp
 {{$sessao->dataInicio}}<br>
 {{$sessao->status}}<br>
 {{$sessao->duracaoTotal}}<br>
-{{$filme->titulo}}<br>
+{{$filme}}<br>
 {{$sessao->sala}}<br>
 
 @endsection

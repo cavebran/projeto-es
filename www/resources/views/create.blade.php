@@ -73,7 +73,10 @@
     </div><br>
     <div class="input-group">
         <select class="custom-select" id="filme" name="filme">
-            <option selected value="{{$sessao->relFilmes->id ?? ''}}">{{$sessao->relFilmes->titulo ?? 'Escolha um Filme'}}</option>
+            @php
+                $filme = $sessao->relFilmes($sessao->filme);
+            @endphp
+            <option selected value="{{$filme['id'] ?? ''}}">{{$filme['titulo'] ?? 'Escolha um Filme'}}</option>
             @foreach($filmes as $filme)
                 <option value="{{$filme->id}}">{{$filme->titulo}}</option>
             @endforeach
@@ -84,7 +87,10 @@
     </div><br>
     <div class="input-group">
         <select class="custom-select" id="sala" name="sala">
-            <option selected value="{{$sessao->relSalas->id ?? ''}}">{{$sessao->relSalas->id ?? 'Escolha uma Sala'}}</option>
+            @php
+                $sala = $sessao->relSalas($sessao->sala);
+            @endphp
+            <option selected value="{{$sala['id'] ?? ''}}">{{$sala['id'] ?? 'Escolha uma Sala'}}</option>
             @foreach($salas as $sala)
                 <option value="{{$sala->id}}">{{$sala->id}}</option>
             @endforeach

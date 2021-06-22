@@ -60,7 +60,7 @@
 
         @foreach($sessao as $sessaos)
         @php
-            $filme=$sessaos->relFilmes($sessaos->filme);
+            $filme=$sessaos->relFilmes($sessaos->filme)['titulo'];
         @endphp
         <tr>
             <th scope="row">#{{$sessaos->id}}</th>
