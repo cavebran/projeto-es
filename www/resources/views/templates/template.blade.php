@@ -1,6 +1,5 @@
 @php
 if(!session('user')) {
-    echo 'ixi';
     header("Location: /");
 	exit();
 }
