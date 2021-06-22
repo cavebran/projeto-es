@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SalaController;
 use App\Http\Controllers\SessaoController;
 use App\Http\Controllers\FuncionarioController;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +34,4 @@ Route::get('/logout', function() {
 });
 
 Route::resource('/sessoes', SessaoController::class);
+Route::resource('/salas', SalaController::class);

@@ -20,11 +20,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Funcionários</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/salas">Salas</a>
-                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/sessoes">Sessões <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/salas">Salas <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sessoes">Sessões</a>
                 </li>
             </ul>
         </div>
@@ -40,41 +40,34 @@
     </nav>
 </header>
 <br>
-<h1 class="text-center mt-5">Sessões</h1>
-<a href="{{url("sessoes/create")}}">
+<h1 class="text-center mt-5">Salas</h1>
+<a href="#">
     <button class="btn btn-primary">Cadastrar</button>
 </a>
 <table class="table table-hover table-dark">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Data de início</th>
-            <th scope="col">Duração total</th>
-            <th scope="col">Filme</th>
-            <th scope="col">Id da sala</th>
-            <th scope="col">Status</th>
-            <th scope="col">Ações</th>
+            <th scope="col">Id</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Capacidade</th>
+            <th scope="col">Intervalo Mínimo</th>
+            <th scope="col">Intervalo Ideal</th>
         </tr>
     </thead>
     <tbody>
 
-        @foreach($sessao as $sessaos)
-        @php
-            $filme=$sessaos->find($sessaos->filme)->relFilmes;
-        
-        @endphp
+        @foreach($salas as $sala)
         <tr>
-            <th scope="row">#{{$sessaos->id}}</th>
-            <td>{{$sessaos->dataInicio}}</td>
-            <td>{{$sessaos->duracaoTotal}}</td>
-            <td>{{$filme->titulo}}</td>
-            <td>{{$sessaos->sala}}</td>
-            <td>{{$sessaos->status}}</td>
+            <th scope="row">#{{$sala->id}}</th>
+            <td>{{$sala->tipo}}</td>
+            <td>{{$sala->capacidade}}</td>
+            <td>{{$sala->intervaloMin}}</td>
+            <td>{{$sala->intervaloIdeal}}</td>
             <td>
-                <a href="{{url("sessoes/$sessaos->id")}}">
+                <a href="#">
                     <button class="btn btn-primary">Visualizar</button>
                 </a>
-                <a href="{{url("sessoes/$sessaos->id/edit")}}">
+                <a href="#">
                     <button class="btn btn-primary">Editar</button>
                 </a>
             </td>

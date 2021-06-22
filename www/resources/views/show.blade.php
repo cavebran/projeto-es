@@ -21,10 +21,10 @@
                     <a class="nav-link" href="#">Funcionários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Salas</a>
+                    <a class="nav-link" href="/salas">Salas</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Sessões <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/sessoes">Sessões <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <div class="dropdown">
