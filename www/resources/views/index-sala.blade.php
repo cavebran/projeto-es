@@ -4,7 +4,9 @@
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">CINEMARCOS</a>
+        <a class="navbar-brand" href="#">
+            <img src="{{url('assets/images/logocinemarcos.png')}}" width="" height="30px" alt="">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,7 +17,7 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Filme</a>
+                    <a class="nav-link" href="#">Filmes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Funcionários</a>
@@ -33,16 +35,17 @@
                 {{session('user')}}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Perfil</a>
+                <a class="dropdown-item disabled text-muted" href="#">Perfil</a>
                 <a class="dropdown-item" href="/logout">Deslogar</a>
             </div>
         </div>
     </nav>
 </header>
 <br>
-<h1 class="text-center mt-5">Salas</h1>
+<h1 class="text-center mt-5">SALAS</h1>
+<hr>
 <a href="#">
-    <button class="btn btn-primary">Cadastrar</button>
+    <button class="btn btn-success mb-2">Cadastrar</button>
 </a>
 <table class="table table-hover table-dark">
     <thead>
@@ -68,7 +71,7 @@
                     <button class="btn btn-primary">Visualizar</button>
                 </a>
                 <a href="#">
-                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-info">Editar</button>
                 </a>
             </td>
         </tr>

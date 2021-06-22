@@ -16,6 +16,8 @@ if(!session('user')) {
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
 	
+	<link rel="icon" href="{{url('assets/images/iconecinemarcos.png')}}">
+
 	<title>CINEMARCOS - Adminstrativo</title>
 </head>
 

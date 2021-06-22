@@ -4,7 +4,9 @@
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">CINEMARCOS</a>
+        <a class="navbar-brand" href="#">
+            <img src="{{url('assets/images/logocinemarcos.png')}}" width="" height="30px" alt="">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,7 +17,7 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Filme</a>
+                    <a class="nav-link" href="#">Filmes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Funcionários</a>
@@ -40,10 +42,11 @@
     </nav>
 </header>
 <br>
-<h1 class="text-center mt-5">Sessões</h1>
-<a href="{{url("sessoes/create")}}">
-    <button class="btn btn-primary">Cadastrar</button>
-</a>
+<h1 class="text-center mt-5">SESSÕES</h1>
+<hr>
+    <a href="{{url("sessoes/create")}}">
+        <button class="btn btn-success mb-2">Cadastrar</button>
+    </a>
 <table class="table table-hover table-dark">
     <thead>
         <tr>
@@ -74,7 +77,7 @@
                     <button class="btn btn-primary">Visualizar</button>
                 </a>
                 <a href="{{url("sessoes/$sessaos->id/edit")}}">
-                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-info">Editar</button>
                 </a>
             </td>
         </tr>

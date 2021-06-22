@@ -4,7 +4,9 @@
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">CINEMARCOS</a>
+        <a class="navbar-brand" href="#">
+            <img src="{{url('assets/images/logocinemarcos.png')}}" width="" height="30px" alt="">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,7 +17,7 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Filme</a>
+                    <a class="nav-link" href="#">Filmes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Funcionários</a>
@@ -32,7 +34,7 @@
                     {{session('user')}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Perfil</a>
+                    <a class="dropdown-item disabled" href="#">Perfil</a>
                     <a class="dropdown-item" href="/logout">Deslogar</a>
                 </div>
             </div>
@@ -40,7 +42,7 @@
     </nav>
 </header>
 <br>
-<h1 class="text-center mt-5">@if(isset($sessao)) Editar uma Sessão @else Cadastrar nova sessão @endif</h1>
+<h1 class="text-center mt-5">@if(isset($sessao)) Editando sessão #{{$sessao->id}} @else Cadastrar nova sessão @endif</h1>
 
 @if(isset($errors) && count($errors)>0)
     <div class="text-center mt-4 mb-4 p-2 alert-danger"> 
@@ -74,7 +76,14 @@
     <div class="input-group">
         <select class="custom-select" id="filme" name="filme">
             @php
-                $filme = $sessao->relFilmes($sessao->filme);
+                $filme = '';
+
+                if(isset($sessao)) {
+                    $filme = $sessao->relFilmes($sessao->filme);
+                    
+                } else {
+                    echo 'nao';
+                }
             @endphp
             <option selected value="{{$filme['id'] ?? ''}}">{{$filme['titulo'] ?? 'Escolha um Filme'}}</option>
             @foreach($filmes as $filme)
@@ -88,7 +97,14 @@
     <div class="input-group">
         <select class="custom-select" id="sala" name="sala">
             @php
-                $sala = $sessao->relSalas($sessao->sala);
+                $sala = '';
+
+                if(isset($sessao)) {
+                    $sala = $sessao->relSalas($sessao->sala);   
+                }
+                else {
+                    echo 'nao';
+                }
             @endphp
             <option selected value="{{$sala['id'] ?? ''}}">{{$sala['id'] ?? 'Escolha uma Sala'}}</option>
             @foreach($salas as $sala)
