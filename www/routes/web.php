@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SessaoController;
+use App\Http\Controllers\FuncionarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +14,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::view('/', 'login');
+Route::get('/', function() {
+    if(session()->has('user')) {
+        return redirect('/sessoes');
+    }
+    return view('login');
+});
+
+Route::post('/login', [FuncionarioController::class, 'FuncionarioLogin']);
+
+Route::get('/logout', function() {
+    if(session()->has('user')) {
+        session()->pull('user');
+    }
+    return redirect('/');
+});
 
 Route::resource('/sessoes', SessaoController::class);

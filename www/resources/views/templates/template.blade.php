@@ -1,3 +1,11 @@
+@php
+if(!session('user')) {
+    echo 'ixi';
+    header("Location: /");
+	exit();
+}
+@endphp
+
 <!doctype html>
 <html lang="en">
 
@@ -16,6 +24,8 @@
 	<main role="main" class="container">
 		@yield('content')
     </main>
+	<script src="{{url('assets/bootstrap/jquery-3.2.1.slim.min.js')}}"></script>
+	<script src="{{url('assets/bootstrap/popper.min.js')}}"></script>
 	<script src="{{url('assets/bootstrap/js/bootstrap.min.js')}}"></script>
 </body>
 

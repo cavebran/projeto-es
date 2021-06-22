@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 class FuncionarioController extends Controller
 {
 
+    public function FuncionarioLogin(Request $request) {
+        $data = $request->input();
+        $request->session()->put('user', $data['user']);
+        return redirect('/sessoes');
+    }
+
     /**
      * Display a listing of the resource.
      *
