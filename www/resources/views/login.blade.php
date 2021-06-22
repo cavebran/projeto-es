@@ -21,6 +21,13 @@
         @csrf
         <img class="mb-4" src="src/images/logohackoonspace.png" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal text-info">Por favor, faça login</h1>
+
+        @if($errors->any())
+            <div class="text-center mt-4 mb-4 p-2 alert-danger">
+                {{$errors->first()}}
+            </div>
+        @endif
+
         <label for="user" class="sr-only">Email</label>
         <input type="text" id="user" name="user" class="form-control bg-dark text-white border-info" placeholder="CPF" required>
         <label for="password" class="sr-only">Senha</label>
